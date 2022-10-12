@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>WA Assignment 7</title>
+    <style>
+    .flex-container {
+      display: flex;  flex-direction:row;
+      background-color: red;
+  }
+
+.flex-container > div {  /*div children of the flex container*/
+  background-color: #f1f1f1; 
+  margin: 10px;  padding: 20px;  font-size: 30px;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) { 
+	 .flex-container{
+		 flex-direction:column;
+		 background-color: green;
+	  }
+	}
+</style></head>
+
+
+<h2>Navya Sri builds a cycler</h2>
+<body>
+
+    <input type="text" id="n1">
+
+		<div class="flex-container" id="t1">
+		  <div class="cycler">row item 1</div>   
+		  <div class="cycler">row item 2</div>  
+		  <div class="cycler">row item 3</div>  
+		</div>
+	
+	<p> Press the button to create an new element of type div and then add it to the container.
+		</p>
+		<button onclick="makeNewDiv()">Add value</button>
+        <button onclick="get()">Get</button>
+        <button onclick="spin()">Spin</button>
+	
+</body>
+<script>
+	function makeNewDiv()
+	{
+		let d = document.createElement("div")
+		let new_d = document.getElementById("n1").value
+		d.innerHTML = new_d
+		d.className = "cycler"
+		let attach = document.getElementById('t1')
+		attach.appendChild(d)
+	}
+	function get()
+	{
+		let cycleritems = document.getElementsByClassName("cycler")
+		let l= cycleritems.length
+		if(l > 0)
+			cycleritems[l-1].remove()
+	}
+	function spin()
+	{
+		let cycleritems = document.getElementsByClassName("cycler")
+		let length1 = cycleritems.length
+		//let removeditem
+		if(length1 > 1)
+		{
+			removeditem = cycleritems[length1-1]
+			cycleritems[length1-1].remove()
+			let container = document.getElementById("t1")
+			container.insertBefore(removeditem, container.firstChild)
+		}
+	}
+</script>
+</html>	
