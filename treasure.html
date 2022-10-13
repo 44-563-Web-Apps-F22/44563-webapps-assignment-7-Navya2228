@@ -21,7 +21,7 @@
        <p id="chests" class="text-uppercase text-decoration-underline">Number of chests checked is zero</p>
        <p id="score" class="text-uppercase text-decoration-underline">Score is unknown</p>
        <p id="help" class="text-uppercase text-decoration-underline">Help report</p>
-
+       <input type="button" value="game" onclick="reset()">
        <div class="row" style="padding: left 0px;" >
         <div class="col-md-2" ><img src="treasure chest.jpg" alt="" height="300px" id="0" onclick="check(0)" width="410px"></div>
         <div class="col-md-2" ><img src="treasure chest.jpg" alt="" height="300px" id="1" onclick="check(1)" width="410px"></div>
@@ -58,7 +58,7 @@
         <div class="col-md-2" ><img src="treasure chest.jpg" alt="" height="300px" id="23" onclick="check(23)" width="410px"></div>
         <div class="col-md-2" ><img src="treasure chest.jpg" alt="" height="300px" id="24" onclick="check(24)" width="410px"></div>
        </div>
-
+       
        <script>
        let ids = new Array();
         for(i=0; i<25; i++)
@@ -115,6 +115,21 @@
             document.getElementById("help").innerHTML = "Help report " + b
         }
 
+        function reset()
+        {
+            treasureLocation = Math.floor(Math.random()*25)
+            while(treasureLocation == 12)
+            {
+                treasureLocation = Math.floor(Math.random()*25)
+            }
+            chestCount = 0
+            score = 0
+            document.getElementById("chests").innerHTML = "Number of chests checked is zero"
+            document.getElementById("score").innerHTML = "Score is unknown"
+            for(let i=0;i<25;i++)
+                if(i != 12)
+                    document.getElementById(ids[i]).src = "empty treasure.jpg"
+        }
     </script>
 
     </body>
