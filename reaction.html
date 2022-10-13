@@ -11,12 +11,13 @@
 </head>
 <body>
 <h2>Navya Sri reaction timer</h2>
-<p id="target">Your time</p>
-<p id="countdown">Count</p>
-<input type="button" class="btn btn-success" onclick="startTime()">Start Timer</button>
-<input type="button" class="btn btn-warning" onclick="recordReact()">React Now</button>
+<p id="time">Your time</p>
+<p id="cd">count down</p>
+<input type="button" class="btn btn-success" onclick="startTime()" value="Start Timer">
+<input type="button" class="btn btn-warning" onclick="recordReact()" value="React Now">
 <script>
   let myTime = Date.now()
+  var random = (Math.floor(Math.random()*11)+2)
   function recordReact()
   {
     myTime = Date.now()
@@ -28,20 +29,21 @@
     for(let i=0;i<4;i++)
     {
       setTimeout(function(){
-      document.getElementById('countdown').innerHTML = i
-      }, (3-i)*1000)
+
+      document.getElementById('cd').innerHTML = i
+      }, (random-i)*1000)
     }
     setTimeout(()=>{
       if(myTime == undefined)
       {
-        document.getElementById('target').innerHTML = "Too Slow"
+        document.getElementById('time').innerHTML = "Too Slow"
       }
       else
       {
         let buttonTime = Date.now()
-        document.getElementById('target').innerHTML = "Time was "+(buttonTime - myTime)
+        document.getElementById('time').innerHTML = "Time was "+(buttonTime - myTime)
       }
-      }, 3000)
+      }, random*3000)
   }
 </script>
 </body>
